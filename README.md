@@ -19,7 +19,7 @@ The service follows the configuration interface in
 | Variable | Default | Controls |
 |---|---|---|
 | `dawarich_service_db_password` | required | Password of the database user `dawarich`, in hex: `openssl rand -hex 32` |
-| `dawarich_service_secret_key_base` | required | Rails secret that signs the sessions: `openssl rand -hex 64` |
+| `dawarich_service_secret_key_base` | required | Rails secret that signs the sessions and derives the keys for 2FA secrets and stored API keys; keep it after the first start: `openssl rand -hex 64` |
 | `dawarich_service_hostname` | empty | The public hostname; without it the app answers on `127.0.0.1` alone |
 | `dawarich_service_config` | `{}` | Dawarich's environment, merged over `dawarich_service_config_defaults` |
 | `dawarich_service_memory` | `{}` | Memory ceilings per container |
