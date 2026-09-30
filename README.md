@@ -9,7 +9,7 @@ PostGIS and draws it on a map.
 | dawarich-db | PostgreSQL with PostGIS | 512M |
 | dawarich-redis | Job queue and cache | 128M |
 | dawarich-app | Rails web app and API on the loopback port | 1G |
-| dawarich-sidekiq | Background jobs: imports, stats, reverse geocoding | 1G |
+| dawarich-sidekiq | Background jobs, such as imports and stats | 1G |
 
 ## Configuration
 
@@ -35,8 +35,12 @@ cannot change them. Dawarich's own variables are in its documentation,
 - The app's entrypoint creates the database and runs the migrations on every
   start. Sidekiq starts after the app.
 - The app speaks HTTP; TLS ends at the proxy.
-- The first login is `demo@dawarich.app` with the password `safepassword`. Change
-  both at once.
+- The first start creates the admin `demo@dawarich.app` with the password
+  `safepassword`. Change both through an SSH tunnel to the loopback port
+  before the hostname and the proxy site put the app on the internet.
+- The database takes `dawarich_service_db_password` at its first start only.
+- Reverse geocoding needs a provider in `dawarich_service_config`, such as
+  `PHOTON_API_HOST`.
 
 ## Role contract
 
