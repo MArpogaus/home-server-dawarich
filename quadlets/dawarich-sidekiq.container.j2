@@ -1,0 +1,14 @@
+[Unit]
+After=dawarich-app.service
+
+[Container]
+Image={{ dawarich_service_app_image }}
+ContainerName=dawarich-sidekiq
+EnvironmentFile=./configs/dawarich.env
+Secret=dawarich_service_db_password,type=env,target=DATABASE_PASSWORD
+Secret=dawarich_service_secret_key_base,type=env,target=SECRET_KEY_BASE
+Volume={{ service_home }}/data/public:/var/app/public:z
+Volume={{ service_home }}/data/watched:/var/app/tmp/imports/watched:z
+Volume={{ service_home }}/data/storage:/var/app/storage:z
+Entrypoint=sidekiq-entrypoint.sh
+Exec=sidekiq

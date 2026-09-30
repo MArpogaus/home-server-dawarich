@@ -1,0 +1,25 @@
+---
+- name: Prepare the service home as the service user
+  become: true
+  become_user: "{{ service_name }}"
+  block:
+    # The database and Redis entrypoints give their dirs to a subuid, which the
+    # user cannot chmod.
+    - name: Check which data directories exist
+      ansible.builtin.stat:
+        path: "{{ service_home }}/data/{{ item }}"
+      loop: [db_data, redis, public, watched, storage]
+      register: dawarich_service_dirs
+
+    - name: Create the missing data directories
+      ansible.builtin.file:
+        path: "{{ service_home }}/data/{{ item.item }}"
+        state: directory
+        mode: '0755'
+      loop: "{{ dawarich_service_dirs.results | rejectattr('stat.exists') | list }}"
+      loop_control:
+        label: "{{ item.item }}"
+
+- name: Deploy the Quadlets
+  ansible.builtin.import_role:
+    name: quadlet_service
