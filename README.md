@@ -55,7 +55,7 @@ dawarich:
 ```
 
 A phone reports to `https://<hostname>/api/v1/<endpoint>?api_key=<key>`; the
-key is on the account page.
+key is on the account page, `/users/edit`.
 
 | App | Endpoint | Body |
 |---|---|---|
