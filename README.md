@@ -35,7 +35,7 @@ cannot change them. Dawarich's own variables are in its documentation,
 - The app's entrypoint creates the database and runs the migrations on every
   start. Sidekiq starts after the app.
 - The app speaks HTTP; TLS ends at the proxy.
-- The first login is `demo@dawarich.app` with the password `password`. Change
+- The first login is `demo@dawarich.app` with the password `safepassword`. Change
   both at once.
 
 ## Role contract
