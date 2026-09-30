@@ -27,7 +27,8 @@ The service follows the configuration interface in
 
 The role keeps the database and Redis addresses, the database user and name,
 `RAILS_ENV`, `APPLICATION_HOSTS` and `APPLICATION_PROTOCOL`; the config
-cannot change them. Dawarich's own variables are in its documentation,
+cannot change them. It must not set `DATABASE_URL`, which the entrypoints read
+before all of them. Dawarich's own variables are in its documentation,
 "Environment variables".
 
 ## Specifics
