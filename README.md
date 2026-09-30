@@ -53,6 +53,9 @@ The entry in `bunker_service_sites` of `home-server`:
 dawarich:
   options:
     REVERSE_PROXY_WS: true
+    # Imports upload with PUT, and the map edits with PATCH and DELETE.
+    ALLOWED_METHODS: "GET|POST|HEAD|PUT|PATCH|DELETE"
+    MAX_CLIENT_SIZE: 1G
     # CRS rule 953100 finds PHP error text in Dawarich's pages and cuts them off.
     CUSTOM_CONF_MODSEC_DAWARICH: SecRuleRemoveById 953100
 ```
