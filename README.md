@@ -40,7 +40,8 @@ cannot change them. Dawarich's own variables are in its documentation,
   before the hostname and the proxy site put the app on the internet.
 - The database takes `dawarich_service_db_password` at its first start only.
 - Reverse geocoding needs a provider in `dawarich_service_config`, such as
-  `PHOTON_API_HOST`.
+  `PHOTON_API_HOST`. The config carries no credential, so a provider or SMTP
+  server that needs a key has no place in this role yet.
 
 ## Proxy site and phones
 
