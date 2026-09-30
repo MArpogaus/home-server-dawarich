@@ -19,7 +19,7 @@ The service follows the configuration interface in
 | Variable | Default | Controls |
 |---|---|---|
 | `dawarich_service_db_password` | required | Password of the database user `dawarich`, in hex: `openssl rand -hex 32` |
-| `dawarich_service_secret_key_base` | required | Rails secret that signs the sessions and derives the keys for 2FA secrets and stored API keys; keep it after the first start: `openssl rand -hex 64` |
+| `dawarich_service_secret_key_base` | required | Rails secret that signs the sessions and derives the key for stored API keys; keep it after the first start: `openssl rand -hex 64` |
 | `dawarich_service_hostname` | empty | The public hostname; without it the app answers on `127.0.0.1` alone |
 | `dawarich_service_config` | `{}` | Dawarich's environment, merged over `dawarich_service_config_defaults` |
 | `dawarich_service_memory` | `{}` | Memory ceilings per container |
@@ -40,10 +40,10 @@ before all of them. Dawarich's own variables are in its documentation,
   `safepassword`. Change both through an SSH tunnel to the loopback port
   before the hostname and the proxy site put the app on the internet.
 - The database takes `dawarich_service_db_password` at its first start only.
-- Reverse geocoding needs a provider in `dawarich_service_config`, such as
-  `PHOTON_API_HOST`. The config carries no credential, so a provider or SMTP
-  server that needs a key has no place in this role yet. Two-factor login and
-  mail stay off for the same reason.
+- Reverse geocoding needs a provider, such as `PHOTON_API_HOST`. A provider
+  key goes on the admin page `/admin/settings`, which stores it encrypted.
+- Two-factor login and mail need secrets in the config, which carries none, so
+  they stay off.
 
 ## Proxy site and phones
 
