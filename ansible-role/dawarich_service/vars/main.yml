@@ -5,6 +5,17 @@ dawarich_service_config_defaults:
   WEB_CONCURRENCY: 1
   BACKGROUND_PROCESSING_CONCURRENCY: 3
 
+# The role's own settings; they win over the config. TLS ends at the proxy.
+dawarich_service_fixed_config:
+  RAILS_ENV: production
+  DATABASE_HOST: 127.0.0.1
+  DATABASE_PORT: 5432
+  DATABASE_USERNAME: dawarich
+  DATABASE_NAME: dawarich
+  REDIS_URL: redis://127.0.0.1:6379
+  APPLICATION_HOSTS: "{{ [dawarich_service_hostname, '127.0.0.1', 'localhost'] | select | join(',') }}"
+  APPLICATION_PROTOCOL: http
+
 dawarich_service_memory_defaults:
   app: 1G
   sidekiq: 1G
