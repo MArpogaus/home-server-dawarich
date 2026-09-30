@@ -42,6 +42,26 @@ cannot change them. Dawarich's own variables are in its documentation,
 - Reverse geocoding needs a provider in `dawarich_service_config`, such as
   `PHOTON_API_HOST`.
 
+## Proxy site and phones
+
+The entry in `bunker_service_sites` of `home-server`:
+
+```yaml
+dawarich:
+  options:
+    REVERSE_PROXY_WS: true
+    # CRS rule 953100 finds PHP error text in Dawarich's pages and cuts them off.
+    CUSTOM_CONF_MODSEC_DAWARICH: SecRuleRemoveById 953100
+```
+
+A phone reports to `https://<hostname>/api/v1/<endpoint>?api_key=<key>`; the
+key is on the account page.
+
+| App | Endpoint | Body |
+|---|---|---|
+| OwnTracks (HTTP mode) | `owntracks/points` | OwnTracks JSON |
+| Traccar Client, or any app with a custom URL | `traccar/points` | Form POST: `lat`, `lon`, `timestamp` (Unix seconds), optional `accuracy`, `altitude`, `speed`, `bearing`, `batt` |
+
 ## Role contract
 
 The contract is in `home-server-template/README.md`.
