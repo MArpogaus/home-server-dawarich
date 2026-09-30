@@ -56,6 +56,8 @@ dawarich:
     # Imports upload with PUT, and the map edits with PATCH and DELETE.
     ALLOWED_METHODS: "GET|POST|HEAD|PUT|PATCH|DELETE"
     MAX_CLIENT_SIZE: 1G
+    # ModSecurity reads the first 128K of a JSON upload and passes the rest.
+    MODSECURITY_SEC_REQUEST_BODY_LIMIT_ACTION: ProcessPartial
     # CRS rule 953100 finds PHP error text in Dawarich's pages and cuts them off.
     CUSTOM_CONF_MODSEC_DAWARICH: SecRuleRemoveById 953100
 ```
