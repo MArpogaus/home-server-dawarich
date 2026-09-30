@@ -13,7 +13,8 @@ dawarich_service_memory_defaults:
 
 quadlet_service_required:
   service_port: '^[0-9]+$'
-  dawarich_service_db_password:
+  # Rails puts it unquoted into YAML, so hex keeps it intact.
+  dawarich_service_db_password: '^[0-9a-f]{32,}$'
   dawarich_service_secret_key_base: '^[0-9a-f]{64,}$'
 quadlet_service_secrets:
   dawarich_service_db_password: "{{ dawarich_service_db_password }}"
