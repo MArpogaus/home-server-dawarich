@@ -46,6 +46,8 @@ threads.
 - The database takes `dawarich_service_db_password` at its first start only.
 - Before each snapshot, `pg_dumpall` writes the database into the service
   subvolume, so the snapshot holds a consistent copy.
+- Redis holds Sidekiq's job queue. At 3/4 of its memory ceiling it refuses
+  new writes instead of dropping jobs or being killed.
 - Reverse geocoding needs a provider, such as `PHOTON_API_HOST`. A provider
   key goes on the admin page `/admin/settings`, which stores it encrypted.
 - Two-factor login and mail need secrets in the config, which carries none, so

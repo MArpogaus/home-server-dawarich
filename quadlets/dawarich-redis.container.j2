@@ -3,6 +3,7 @@ Image={{ dawarich_service_redis_image }}
 ContainerName=dawarich-redis
 Volume={{ service_home }}/data/redis:/data:Z
 AddCapability=CHOWN SETGID SETUID
+Exec=redis-server --maxmemory {{ (quadlet_service_memory.redis | human_to_bytes * 3) // 4 }} --maxmemory-policy noeviction
 HealthCmd=redis-cli ping
 HealthInterval=30s
 HealthOnFailure=kill
