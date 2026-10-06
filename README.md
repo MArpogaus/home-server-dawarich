@@ -23,6 +23,7 @@ The service follows the configuration interface in
 | `dawarich_service_hostname` | empty | The public hostname; without it the app answers on `127.0.0.1` alone |
 | `dawarich_service_config` | `{}` | Dawarich's environment, merged over `dawarich_service_config_defaults` |
 | `dawarich_service_memory` | `{}` | Memory ceilings per container |
+| `dawarich_service_cpu` | `{}` | CPU quotas per container, such as `{<container>: 50%}` |
 | `dawarich_service_*_image` | see `defaults/main.yml` | The images |
 
 The role keeps the database and Redis addresses, the database user and name,

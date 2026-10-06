@@ -15,3 +15,4 @@ dawarich_service_hostname: ""
 dawarich_service_config: {}
 # Memory ceilings per container, merged over dawarich_service_memory_defaults.
 dawarich_service_memory: {}
+dawarich_service_cpu: {}

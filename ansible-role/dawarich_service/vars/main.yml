@@ -21,6 +21,7 @@ dawarich_service_memory_defaults:
   sidekiq: 1G
   db: 512M
   redis: 128M
+dawarich_service_cpu_defaults: {}
 
 quadlet_service_required:
   service_port: '^[0-9]+$'
@@ -31,3 +32,4 @@ quadlet_service_secrets:
   dawarich_service_db_password: "{{ dawarich_service_db_password }}"
   dawarich_service_secret_key_base: "{{ dawarich_service_secret_key_base }}"
 quadlet_service_memory: "{{ dawarich_service_memory_defaults | combine(dawarich_service_memory) }}"
+quadlet_service_cpu: "{{ dawarich_service_cpu_defaults | combine(dawarich_service_cpu) }}"
