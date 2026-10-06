@@ -3,16 +3,11 @@ dawarich_service_app_image: "docker.io/freikin/dawarich:1.15.2"
 dawarich_service_db_image: "docker.io/postgis/postgis:17-3.5-alpine"
 dawarich_service_redis_image: "docker.io/library/redis:8-alpine"
 
-# Required. openssl rand -hex 32.
 dawarich_service_db_password: ""
-# Signs the sessions and derives the encryption keys: openssl rand -hex 64.
 dawarich_service_secret_key_base: ""
 
-# Empty: no public hostname; the app answers on the loopback port alone.
 dawarich_service_hostname: ""
 
-# Dawarich's environment, merged over dawarich_service_config_defaults in vars/main.yml.
 dawarich_service_config: {}
-# Memory ceilings per container, merged over dawarich_service_memory_defaults.
 dawarich_service_memory: {}
 dawarich_service_cpu: {}

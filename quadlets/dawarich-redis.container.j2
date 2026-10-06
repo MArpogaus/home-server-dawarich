@@ -2,7 +2,6 @@
 Image={{ dawarich_service_redis_image }}
 ContainerName=dawarich-redis
 Volume={{ service_home }}/data/redis:/data:Z
-# chown of /data, then a drop to the redis user.
 AddCapability=CHOWN SETGID SETUID
 HealthCmd=redis-cli ping
 HealthInterval=30s

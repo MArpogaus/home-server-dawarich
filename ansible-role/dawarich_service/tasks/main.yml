@@ -3,8 +3,6 @@
   become: true
   become_user: "{{ service_name }}"
   block:
-    # The database and Redis entrypoints give their dirs to a subuid, which the
-    # user cannot chmod.
     - name: Check which data directories exist
       ansible.builtin.stat:
         path: "{{ service_home }}/data/{{ item }}"

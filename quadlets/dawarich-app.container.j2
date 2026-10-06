@@ -10,7 +10,6 @@ Secret=dawarich_service_secret_key_base,type=env,target=SECRET_KEY_BASE
 Volume={{ service_home }}/data/public:/var/app/public:z
 Volume={{ service_home }}/data/watched:/var/app/tmp/imports/watched:z
 Volume={{ service_home }}/data/storage:/var/app/storage:z
-# The image entrypoint is bundle exec; this one also runs the migrations.
 Entrypoint=web-entrypoint.sh
 Exec=bin/rails server -p 3000 -b 0.0.0.0
 HealthCmd=wget -qO /dev/null http://127.0.0.1:3000/api/v1/health
@@ -20,5 +19,4 @@ HealthOnFailure=kill
 Notify=healthy
 
 [Service]
-# The start covers the image pull and the migrations.
 TimeoutStartSec=900

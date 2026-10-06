@@ -30,12 +30,14 @@ The role keeps the database and Redis addresses, the database user and name,
 `RAILS_ENV`, `APPLICATION_HOSTS` and `APPLICATION_PROTOCOL`; the config
 cannot change them. It must not set `DATABASE_URL`, which the entrypoints read
 before all of them. Dawarich's own variables are in its documentation,
-"Environment variables".
+"Environment variables". The defaults set one Puma worker and three Sidekiq
+threads.
 
 ## Specifics
 
 - The app's entrypoint creates the database and runs the migrations on every
-  start. Sidekiq starts after the app.
+  start. Sidekiq starts after the app. A start with an image pull and
+  migrations can take up to 15 minutes.
 - The app speaks HTTP; TLS ends at the proxy.
 - The first start creates the admin `demo@dawarich.app` with the password
   `safepassword`. Change both through an SSH tunnel to the loopback port

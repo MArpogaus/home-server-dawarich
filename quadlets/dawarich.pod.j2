@@ -1,7 +1,4 @@
 [Pod]
 PodName=dawarich
-# Loopback only. Other pods reach it through their pasta options.
 PublishPort=127.0.0.1:{{ service_port }}:3000
-# The containers share the pod's /dev/shm. Postgres uses it for parallel
-# queries and vacuum, and the default is 64M.
 ShmSize=256m

@@ -4,14 +4,9 @@ ContainerName=dawarich-db
 EnvironmentFile=./configs/db.env
 Secret=dawarich_service_db_password
 Volume={{ service_home }}/data/db_data:/var/lib/postgresql/data:Z
-# The entrypoint fixes the data dir, then drops to the postgres user.
 AddCapability=CHOWN DAC_OVERRIDE FOWNER SETGID SETUID
-# TCP, not the socket: the entrypoint's temporary first-start server listens
-# on the socket alone.
 HealthCmd=pg_isready -h 127.0.0.1 -U dawarich
 HealthInterval=10s
-# Nine failed checks in a row, 90 s, before the kill: a stall under memory
-# pressure during an import is no reason to kill Postgres.
 HealthRetries=9
 HealthStartPeriod=300s
 HealthOnFailure=kill
