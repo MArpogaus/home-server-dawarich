@@ -24,6 +24,7 @@ The service follows the configuration interface in
 | `dawarich_service_config` | `{}` | Dawarich's environment, merged over `dawarich_service_config_defaults` |
 | `dawarich_service_memory` | `{}` | Memory ceilings per container |
 | `dawarich_service_cpu` | `{}` | CPU quotas per container, such as `{sidekiq: 50%}` |
+| `dawarich_service_db_dump_retention_days` | `30` | Dump age before pruning |
 | `dawarich_service_*_image` | see `defaults/main.yml` | The images |
 
 The role keeps the database and Redis addresses, the database user and name,
@@ -43,6 +44,8 @@ threads.
   `safepassword`. Change both through an SSH tunnel to the loopback port
   before the hostname and the proxy site put the app on the internet.
 - The database takes `dawarich_service_db_password` at its first start only.
+- Before each snapshot, `pg_dumpall` writes the database into the service
+  subvolume, so the snapshot holds a consistent copy.
 - Reverse geocoding needs a provider, such as `PHOTON_API_HOST`. A provider
   key goes on the admin page `/admin/settings`, which stores it encrypted.
 - Two-factor login and mail need secrets in the config, which carries none, so

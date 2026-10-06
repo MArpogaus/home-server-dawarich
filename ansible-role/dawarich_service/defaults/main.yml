@@ -11,3 +11,4 @@ dawarich_service_hostname: ""
 dawarich_service_config: {}
 dawarich_service_memory: {}
 dawarich_service_cpu: {}
+dawarich_service_db_dump_retention_days: 30

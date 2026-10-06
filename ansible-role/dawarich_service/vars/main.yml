@@ -30,3 +30,7 @@ quadlet_service_secrets:
   dawarich_service_secret_key_base: "{{ dawarich_service_secret_key_base }}"
 quadlet_service_memory: "{{ dawarich_service_memory_defaults | combine(dawarich_service_memory) }}"
 quadlet_service_cpu: "{{ dawarich_service_cpu_defaults | combine(dawarich_service_cpu) }}"
+quadlet_service_db_dump:
+  container: dawarich-db
+  user: dawarich
+  retention_days: "{{ dawarich_service_db_dump_retention_days }}"
