@@ -10,7 +10,9 @@ HealthInterval=10s
 HealthRetries=9
 HealthStartPeriod=300s
 HealthOnFailure=kill
+StopTimeout=120
 Notify=healthy
 
 [Service]
 TimeoutStartSec=300
+TimeoutStopSec=150
