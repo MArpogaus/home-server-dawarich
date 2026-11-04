@@ -40,6 +40,10 @@ threads.
   start. Sidekiq starts after the app. A start with an image pull and
   migrations can take up to 15 minutes.
 - The app speaks HTTP; TLS ends at the proxy.
+- Sidekiq runs the jobs in its own container. Do not set `SIDEKIQ_EMBEDDED`
+  in the config: the app would then run a second set of jobs.
+- Sign-up is closed (`ALLOW_EMAIL_PASSWORD_REGISTRATION=false` upstream).
+- `/` redirects to the sign-in page. Probe `/api/v1/health`.
 - The first start creates the admin `demo@dawarich.app` with the password
   `safepassword`. Change both through an SSH tunnel to the loopback port
   before the hostname and the proxy site put the app on the internet.
