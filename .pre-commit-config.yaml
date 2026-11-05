@@ -7,21 +7,19 @@ repos:
       - id: check-executables-have-shebangs
       - id: check-merge-conflict
       - id: check-shebang-scripts-are-executable
-        # A .j2 shebang belongs to the rendered file, not to the template.
         exclude: \.j2$
       - id: check-yaml
       - id: end-of-file-fixer
       - id: mixed-line-ending
       - id: trailing-whitespace
 
-  # ansible-lint owns YAML style, so no YAML formatter runs beside it.
   - repo: https://github.com/ansible/ansible-lint
-    rev: e7f397ad6dfa20d274afa17cd7bbedd84ed136f5  # frozen: v26.9.0
+    rev: 9bce2bfb8f4a984e6b13767bc0d6bf0a49492164  # frozen: v26.10.1
     hooks:
       - id: ansible-lint
 
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: 054e4a278e11abb9b8df6c103fa64f544d468ee5  # frozen: v4.19.0
+    rev: f690817de25831a37094ca35af5ada05c909ff1c  # frozen: v4.19.3
     hooks:
       - id: commitizen
         stages: [commit-msg]

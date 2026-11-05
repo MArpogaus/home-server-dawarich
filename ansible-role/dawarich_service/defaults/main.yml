@@ -1,0 +1,14 @@
+---
+dawarich_service_app_image: "docker.io/freikin/dawarich:1.21.0"
+dawarich_service_db_image: "docker.io/postgis/postgis:17-3.5-alpine"
+dawarich_service_redis_image: "docker.io/library/redis:8-alpine"
+
+dawarich_service_db_password: ""
+dawarich_service_secret_key_base: ""
+
+dawarich_service_hostname: ""
+
+dawarich_service_config: {}
+dawarich_service_memory: {}
+dawarich_service_cpu: {}
+dawarich_service_db_dump_retention_days: 30
