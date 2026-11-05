@@ -16,7 +16,9 @@ HealthCmd=wget -qO /dev/null http://127.0.0.1:3000/api/v1/health
 HealthInterval=10s
 HealthStartPeriod=600s
 HealthOnFailure=kill
+StopTimeout=60
 Notify=healthy
 
 [Service]
 TimeoutStartSec=900
+TimeoutStopSec=90
