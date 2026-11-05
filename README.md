@@ -42,7 +42,7 @@ threads.
 - The app speaks HTTP; TLS ends at the proxy.
 - Sidekiq runs the jobs in its own container. Do not set `SIDEKIQ_EMBEDDED`
   in the config: the app would then run a second set of jobs.
-- Sign-up is closed (`ALLOW_EMAIL_PASSWORD_REGISTRATION=false` upstream).
+- Sign-up is closed by default (`ALLOW_EMAIL_PASSWORD_REGISTRATION=false`). An admin can open it at runtime.
 - `/` redirects to the sign-in page. Probe `/api/v1/health`.
 - The first start creates the admin `demo@dawarich.app` with the password
   `safepassword`. Change both through an SSH tunnel to the loopback port
